@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './country.css'
-const Country = ({country,handelVisitedCountrys}) => {
+const Country = ({country,handelVisitedCountrys,handelVisitedFlags}) => {
 //    console.log(country);
 const {name,flags,cca2,population,area}=country;
 
@@ -21,14 +21,15 @@ setVisited(!visited);
             <p>Population:{population}</p>
             <hr />
             <p>Area : {area}</p>
-            <button onClick={handelVisit} style={{backgroundColor:visited?'red':'blue',padding:'8px 15px',borderRadius:'8px',border:'none',color:'white',fontSize:'18px'}}>{
+            <button onClick={handelVisit} style={{backgroundColor:visited?'red':'blue',padding:'8px 15px',borderRadius:'8px',border:'none',color:'white',fontSize:'18px',cursor:'pointer'}}>{
                 visited?"Visited":"Go To Visit"
             }</button>
            <span style={{color:'blue',marginLeft:'10px',fontSize:'16px'}}> {
                 visited?" You Have Visited":" You Have To  Visit"
             }</span>
 
-            <button onClick={()=>{handelVisitedCountrys(country)}}>Visited Cnty</button>
+            <button style={{backgroundColor:'green',padding:'8px 15px',marginTop:'20px',borderRadius:'8px',border:'none',color:'white',fontSize:'18px',cursor:'pointer'}} onClick={()=>{handelVisitedCountrys(country)}}>Add Country</button>
+            <button style={{backgroundColor:'orange',padding:'8px 15px',marginTop:'20px',marginLeft:'10px',borderRadius:'8px',border:'none',color:'white',fontSize:'18px',cursor:'pointer'}} onClick={()=>{handelVisitedFlags(country.flags)}}>Add Flags</button>
         </div>
     );
 };
